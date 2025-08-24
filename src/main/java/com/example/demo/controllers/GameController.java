@@ -30,6 +30,15 @@ public String list(Model model) {
     return "games/list";
 }
 
+    //Fetch game using id - Path parameter
+    @GetMapping("/{id}")
+    public String getGame(@PathVariable Long id, Model model) {
+        Game game = gameService.get(id);
+        model.addAttribute("game", game);
+        return "games/detail";
+    }
+
+
     // Create form
     @GetMapping("/new")
     // @RequestParam optional - Query Paramater (Ex. Pagination)
